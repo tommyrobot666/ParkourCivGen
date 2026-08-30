@@ -6,7 +6,9 @@
         "type": "parkourcivgen:parkour",
         "settings": {
           "biome": "minecraft:plains",
-          "block": "minecraft:grass_block",
+          "block": {
+            "Name": "minecraft:grass_block"
+          },
           "spacing": 1
         }
       }
@@ -17,7 +19,9 @@
         "type": "parkourcivgen:parkour",
         "settings": {
           "biome": "minecraft:the_end",
-          "block": "minecraft:end_stone",
+          "block": {
+            "Name": "minecraft:end_stone"
+          },
           "spacing": 3
         }
       }
@@ -28,7 +32,9 @@
         "type": "parkourcivgen:parkour",
         "settings": {
           "biome": "minecraft:nether_wastes",
-          "block": "minecraft:minecraft",
+          "block": {
+            "Name":"minecraft:netherrack"
+          },
           "spacing": 2
         }
       }
