@@ -1,5 +1,6 @@
 package lommie.parkourcivgen;
 
+import lommie.parkourcivgen.chunk.ModChunkGenerators;
 import lommie.parkourcivgen.platform.Services;
 import lommie.parkourcivgen.worldpreset.ModWorldPresets;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -30,5 +31,6 @@ public class CommonClass {
 //        }
 
         ModWorldPresets.register();
+        ModChunkGenerators.register();
     }
 }

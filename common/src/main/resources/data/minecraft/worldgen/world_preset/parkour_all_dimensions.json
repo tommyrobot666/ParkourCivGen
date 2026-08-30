@@ -1,0 +1,37 @@
+{
+  "dimensions": {
+    "minecraft:overworld": {
+      "type": "minecraft:overworld",
+      "generator": {
+        "type": "parkourcivgen:parkour",
+        "settings": {
+          "biome": "minecraft:plains",
+          "block": "minecraft:grass_block",
+          "spacing": 1
+        }
+      }
+    },
+    "minecraft:the_end": {
+      "type": "minecraft:the_end",
+      "generator": {
+        "type": "parkourcivgen:parkour",
+        "settings": {
+          "biome": "minecraft:the_end",
+          "block": "minecraft:end_stone",
+          "spacing": 3
+        }
+      }
+    },
+    "minecraft:the_nether": {
+      "type": "minecraft:the_nether",
+      "generator": {
+        "type": "parkourcivgen:parkour",
+        "settings": {
+          "biome": "minecraft:nether_wastes",
+          "block": "minecraft:minecraft",
+          "spacing": 2
+        }
+      }
+    }
+  }
+}
