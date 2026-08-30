@@ -9,6 +9,7 @@ import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.biome.FixedBiomeSource;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
@@ -43,7 +44,18 @@ public class ParkourLevelSource extends ChunkGenerator {
     }
 
     @Override
-    public void applyCarvers(WorldGenRegion worldGenRegion, long l, RandomState randomState, BiomeManager biomeManager, StructureManager structureManager, ChunkAccess chunkAccess) {}
+    public void applyCarvers(WorldGenRegion worldGenRegion, long l, RandomState randomState, BiomeManager biomeManager, StructureManager structureManager, ChunkAccess chunkAccess) {
+        for(int x = 0; x < 16; ++x) {
+            for (int z = 0; z < 16; ++z) {
+                BlockPos pos = new BlockPos(x, 0, z);
+                BlockPos globalPos = chunkAccess.getPos().getBlockAt(pos.getX(), pos.getY(), pos.getZ());
+
+                if (globalPos.getX() % settings.getSpacing() != 0 && globalPos.getY() % settings.getSpacing() != 0){
+                    chunkAccess.setBlockState(pos, Blocks.AIR.defaultBlockState());
+                }
+            }
+        }
+    }
 
     @Override
     public void buildSurface(WorldGenRegion worldGenRegion, StructureManager structureManager, RandomState randomState, ChunkAccess chunkAccess) {}
@@ -63,7 +75,7 @@ public class ParkourLevelSource extends ChunkGenerator {
                 BlockPos pos = new BlockPos(x,0,z);
                 BlockPos globalPos = chunkAccess.getPos().getBlockAt(pos.getX(),pos.getY(),pos.getZ());
 
-                if (globalPos.getX() % settings.getSpacing() == 0 && globalPos.getY() % settings.getSpacing() == 0) {
+                if (globalPos.getX() % settings.getSpacing() == 0 && globalPos.getZ() % settings.getSpacing() == 0) {
                     chunkAccess.setBlockState(pos, settings.getBlock());
                 }
             }

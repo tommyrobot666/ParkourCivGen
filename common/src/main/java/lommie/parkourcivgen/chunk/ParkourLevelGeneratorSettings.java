@@ -42,6 +42,6 @@ public class ParkourLevelGeneratorSettings {
     }
 
     public int getSpacing(){
-        return spacing;
+        return spacing+1;
     }
 }
