@@ -44,18 +44,7 @@ public class ParkourLevelSource extends ChunkGenerator {
     }
 
     @Override
-    public void applyCarvers(WorldGenRegion worldGenRegion, long l, RandomState randomState, BiomeManager biomeManager, StructureManager structureManager, ChunkAccess chunkAccess) {
-        for(int x = 0; x < 16; ++x) {
-            for (int z = 0; z < 16; ++z) {
-                BlockPos pos = new BlockPos(x, 0, z);
-                BlockPos globalPos = chunkAccess.getPos().getBlockAt(pos.getX(), pos.getY(), pos.getZ());
-
-                if (globalPos.getX() % settings.getSpacing() != 0 && globalPos.getY() % settings.getSpacing() != 0){
-                    chunkAccess.setBlockState(pos, Blocks.AIR.defaultBlockState());
-                }
-            }
-        }
-    }
+    public void applyCarvers(WorldGenRegion worldGenRegion, long l, RandomState randomState, BiomeManager biomeManager, StructureManager structureManager, ChunkAccess chunkAccess) {}
 
     @Override
     public void buildSurface(WorldGenRegion worldGenRegion, StructureManager structureManager, RandomState randomState, ChunkAccess chunkAccess) {}
