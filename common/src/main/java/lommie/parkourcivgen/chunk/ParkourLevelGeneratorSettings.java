@@ -36,4 +36,12 @@ public class ParkourLevelGeneratorSettings {
     public Holder<Biome> getBiome() {
         return biome;
     }
+
+    public BlockState getBlock(){
+        return block;
+    }
+
+    public int getSpacing(){
+        return spacing;
+    }
 }
