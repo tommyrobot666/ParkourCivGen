@@ -1,4 +1,4 @@
-package com.example.examplemod.platform.services;
+package lommie.parkourcivgen.platform.services;
 
 public interface IPlatformHelper {
 

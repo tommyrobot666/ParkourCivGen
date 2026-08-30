@@ -1,7 +1,7 @@
-package com.example.examplemod.platform;
+package lommie.parkourcivgen.platform;
 
-import com.example.examplemod.Constants;
-import com.example.examplemod.platform.services.IPlatformHelper;
+import lommie.parkourcivgen.Constants;
+import lommie.parkourcivgen.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
 
