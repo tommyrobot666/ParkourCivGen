@@ -30,11 +30,9 @@ public class ModWorldPresets {
     }
 
     public static final ResourceKey<WorldPreset> PARKOUR = register("parkour",
-            (plains) -> new ParkourLevelSource(new ParkourLevelGeneratorSettings(
-                    plains,
-                    Blocks.GRASS_BLOCK.defaultBlockState(),
-                    1
-            )), new ParkourPresetEditor());
+            ParkourLevelSource::getDefault,
+            new ParkourPresetEditor()
+    );
 
 
     public static void register(){}

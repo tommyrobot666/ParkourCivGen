@@ -5,6 +5,7 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.dimension.DimensionType;
 
@@ -25,6 +26,14 @@ public class ParkourLevelGeneratorSettings {
         this.biome = biome;
         this.block = block;
         this.spacing = spacing;
+    }
+
+    public static ParkourLevelGeneratorSettings getDefault(Holder<Biome> plains) {
+        return new ParkourLevelGeneratorSettings(
+                plains,
+                Blocks.GRASS_BLOCK.defaultBlockState(),
+                1
+        );
     }
 
     private static DataResult<ParkourLevelGeneratorSettings> validateHeight(ParkourLevelGeneratorSettings settings){

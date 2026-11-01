@@ -3,13 +3,14 @@ package lommie.parkourcivgen.chunk;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.StructureManager;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.biome.FixedBiomeSource;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
@@ -36,6 +37,10 @@ public class ParkourLevelSource extends ChunkGenerator {
     public ParkourLevelSource(ParkourLevelGeneratorSettings settings) {
         super(new FixedBiomeSource(settings.getBiome()));
         this.settings = settings;
+    }
+
+    public static ParkourLevelSource getDefault(Holder<Biome> plains) {
+        return new ParkourLevelSource(ParkourLevelGeneratorSettings.getDefault(plains));
     }
 
     @Override
@@ -97,5 +102,9 @@ public class ParkourLevelSource extends ChunkGenerator {
     @Override
     public void addDebugScreenInfo(List<String> list, RandomState randomState, BlockPos blockPos) {
         list.add("Jump for the beef!");
+    }
+
+    public ParkourLevelGeneratorSettings getSettings() {
+        return settings;
     }
 }
