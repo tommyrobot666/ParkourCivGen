@@ -1,18 +1,17 @@
 package lommie.parkourcivgen.chunk;
 
 import com.mojang.serialization.MapCodec;
-import lommie.parkourcivgen.Constants;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
+import lommie.parkourcivgen.platform.Services;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 
+import java.util.function.Supplier;
+
 public class ModChunkGenerators {
-    static <T extends ChunkGenerator> MapCodec<T> register(String name, MapCodec<T> codec){
-        return Registry.register(BuiltInRegistries.CHUNK_GENERATOR, Identifier.fromNamespaceAndPath(Constants.MOD_ID,name), codec);
+    static <T extends ChunkGenerator> Supplier<MapCodec<T>> register(String name, MapCodec<T> codec){
+        return Services.PLATFORM.registerChunkGenerator(name,codec);
     }
 
-    public static final MapCodec<ParkourLevelSource> PARKOUR = register("parkour",ParkourLevelSource.CODEC);
+    public static final Supplier<MapCodec<ParkourLevelSource>> PARKOUR = register("parkour",ParkourLevelSource.CODEC);
 
     public static void register(){}
 }

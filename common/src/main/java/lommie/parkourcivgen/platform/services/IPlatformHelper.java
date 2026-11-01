@@ -1,5 +1,10 @@
 package lommie.parkourcivgen.platform.services;
 
+import com.mojang.serialization.MapCodec;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+
+import java.util.function.Supplier;
+
 public interface IPlatformHelper {
 
     /**
@@ -33,4 +38,6 @@ public interface IPlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    <T extends ChunkGenerator> Supplier<MapCodec<T>> registerChunkGenerator(String name, MapCodec<T> codec);
 }
