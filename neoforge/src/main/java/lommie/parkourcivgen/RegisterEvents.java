@@ -1,11 +1,14 @@
 package lommie.parkourcivgen;
 
 import com.mojang.serialization.MapCodec;
+import lommie.parkourcivgen.client.ParkourPresetEditor;
+import lommie.parkourcivgen.worldpreset.ModWorldPresets;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterPresetEditorsEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.ArrayList;
@@ -25,5 +28,12 @@ public class RegisterEvents {
                     }
                 }
         );
+    }
+
+    @SubscribeEvent
+    public static void registerPresetEditors(RegisterPresetEditorsEvent event){
+        for (ModWorldPresets.BootstrappedPreset preset : ModWorldPresets.ADD_TO_BOOTSTRAP_MIXIN) {
+            event.register(preset.preset(),new ParkourPresetEditor());
+        }
     }
 }

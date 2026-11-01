@@ -16,6 +16,8 @@ import java.util.Optional;
 
 @Mixin(WorldCreationUiState.class)
 public class WorldCreationUiStateMixin {
+    // TODO move this hack to only fabric
+
     @Redirect(method = {
             "Lnet/minecraft/client/gui/screens/worldselection/WorldCreationUiState;getPresetEditor()Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;",
             "Lnet/minecraft/client/gui/screens/worldselection/WorldCreationUiState;updatePresetLists()V"
