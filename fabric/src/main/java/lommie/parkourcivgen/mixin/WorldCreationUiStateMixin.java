@@ -1,6 +1,5 @@
 package lommie.parkourcivgen.mixin;
 
-import lommie.parkourcivgen.client.ParkourPresetEditor;
 import lommie.parkourcivgen.worldpreset.ModWorldPresets;
 import net.minecraft.client.gui.screens.worldselection.PresetEditor;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationUiState;
@@ -16,8 +15,6 @@ import java.util.Optional;
 
 @Mixin(WorldCreationUiState.class)
 public class WorldCreationUiStateMixin {
-    // TODO move this hack to only fabric
-
     @Redirect(method = {
             "Lnet/minecraft/client/gui/screens/worldselection/WorldCreationUiState;getPresetEditor()Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;",
             "Lnet/minecraft/client/gui/screens/worldselection/WorldCreationUiState;updatePresetLists()V"
@@ -25,7 +22,11 @@ public class WorldCreationUiStateMixin {
             at= @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;EDITORS:Ljava/util/Map;"))
     private Map<Optional<ResourceKey<WorldPreset>>, PresetEditor> addParkourGenEditor(){
         HashMap<Optional<ResourceKey<WorldPreset>>, PresetEditor> editors = new HashMap<>(PresetEditor.EDITORS);
-        editors.put(Optional.of(ModWorldPresets.PARKOUR),new ParkourPresetEditor());
+        for (ModWorldPresets.BootstrappedPreset preset : ModWorldPresets.deferredBootstrappedPresets) {
+            if (preset.presetEditor() != null){
+                editors.put(Optional.of(preset.preset()), preset.presetEditor());
+            }
+        }
         return editors;
     }
 }

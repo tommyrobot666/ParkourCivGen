@@ -35,7 +35,7 @@ public abstract class WorldPresetsBootstrapMixin {
             at = @At("TAIL"))
     void addMoreWorldPresets(CallbackInfo ci){
         Holder.Reference<Biome> plains = this.biomes.getOrThrow(Biomes.PLAINS);
-        for (ModWorldPresets.BootstrappedPreset bootstrappedPreset : ModWorldPresets.ADD_TO_BOOTSTRAP_MIXIN) {
+        for (ModWorldPresets.BootstrappedPreset bootstrappedPreset : ModWorldPresets.deferredBootstrappedPresets) {
             this.registerCustomOverworldPreset(bootstrappedPreset.preset(),
                     this.makeOverworld(bootstrappedPreset.generator().apply(plains)));
         }

@@ -32,8 +32,8 @@ public class RegisterEvents {
 
     @SubscribeEvent
     public static void registerPresetEditors(RegisterPresetEditorsEvent event){
-        for (ModWorldPresets.BootstrappedPreset preset : ModWorldPresets.ADD_TO_BOOTSTRAP_MIXIN) {
-            event.register(preset.preset(),new ParkourPresetEditor());
+        for (ModWorldPresets.BootstrappedPreset preset : ModWorldPresets.deferredBootstrappedPresets) {
+            event.register(preset.preset(), preset.presetEditor());
         }
     }
 }
