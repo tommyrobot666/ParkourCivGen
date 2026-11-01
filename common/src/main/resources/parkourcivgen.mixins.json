@@ -6,7 +6,9 @@
   "mixins": [
     "WorldPresetsBootstrapMixin"
   ],
-  "client": [],
+  "client": [
+    "WorldCreationUiStateMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
